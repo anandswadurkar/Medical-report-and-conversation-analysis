@@ -1,0 +1,45 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "medexplain: an interactive notebook that helps patients understand their medical reports and visit transcripts"
+abstract: >-
+  A Jupyter notebook and Python package that explains a patient's own radiology,
+  pathology and lab reports and doctor-patient conversation transcripts in plain
+  language. It runs offline by default: document-type detection with shown evidence,
+  section reordering (conclusion first), a curated plain-language glossary with
+  NegEx-style negation and uncertainty detection, lab results compared only with the
+  reference range printed in the report, extraction of visit instructions and warning
+  signs, and generated questions for the care team. An optional, consent-gated
+  explanation uses the Claude API on redacted text.
+type: software
+authors:
+  - family-names: Wadurkar
+    given-names: Anand
+    affiliation: Syracuse University
+version: 0.1.0
+date-released: 2026-11-16
+license: MIT
+keywords:
+  - patient education
+  - health literacy
+  - clinical natural language processing
+  - radiology reports
+  - pathology reports
+  - doctor-patient conversation
+references:
+  - type: article
+    title: "A simple algorithm for identifying negated findings and diseases in discharge summaries"
+    authors:
+      - family-names: Chapman
+        given-names: Wendy W.
+      - family-names: Bridewell
+        given-names: Will
+      - family-names: Hanbury
+        given-names: Paul
+      - family-names: Cooper
+        given-names: Gregory F.
+      - family-names: Buchanan
+        given-names: Bruce G.
+    year: 2001
+    journal: "Journal of Biomedical Informatics"
+    volume: 34
+    doi: 10.1006/jbin.2001.1029

@@ -1,0 +1,29 @@
+# Run `pre-commit install` once; it then checks staged files on every commit.
+# pre-commit is kept out of environment.yml to keep the conda solve small; install it
+# once per machine, e.g. `pipx install pre-commit`.
+#
+# The notebooks are build output from tools/build_notebook.py, so they are excluded
+# from formatting. Regenerating them is what keeps them correct, and a formatter
+# rewriting generated JSON would make their diffs unreadable.
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.17.0
+    hooks:
+      - id: ruff
+        args: [--fix]
+      - id: ruff-format
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+        exclude: '\.ipynb$'
+      - id: end-of-file-fixer
+        exclude: '\.ipynb$'
+      - id: check-yaml
+      - id: check-toml
+      # Nothing in this repo should exceed a few hundred KB. A large file is most
+      # likely an uploaded report saved by mistake, so the limit is tight.
+      - id: check-added-large-files
+        args: [--maxkb=500]
+      - id: check-merge-conflict

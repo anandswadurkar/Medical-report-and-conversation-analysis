@@ -1,0 +1,28 @@
+# Patient documents must never be committed. Keep your own reports outside this
+# folder; these patterns are a backstop if one is saved here anyway.
+uploads/
+my_documents/
+*.pdf
+*.docx
+*.doc
+!tests/fixtures/*.pdf
+
+# Python
+__pycache__/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.hypothesis/
+build/
+dist/
+
+# Notebooks: checkpoints only; the generated notebook itself is tracked (no outputs)
+.ipynb_checkpoints/
+
+# Secrets
+.env
+
+# Editors / OS
+.vscode/
+Thumbs.db
+desktop.ini

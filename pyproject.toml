@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "medexplain"
+version = "0.1.0"
+description = "An interactive notebook that helps patients understand their own medical reports and visit transcripts"
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [{ name = "Anand Wadurkar" }]
+requires-python = ">=3.11"
+# Installed from conda-forge via environment.yml; listed here for metadata only.
+# Use `pip install -e . --no-deps` so pip never pulls wheels over conda builds.
+# The core analysis is standard-library only; these serve file reading, the widget
+# app and the optional Claude explanation.
+dependencies = ["ipywidgets>=8", "pypdf", "python-docx", "markdown"]
+
+[project.optional-dependencies]
+claude = ["anthropic"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests", "src"]
+addopts = "--doctest-modules -ra"
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+extend-exclude = ["notebooks"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+# E501: glossary rows and long user-facing strings are kept on one line each so a
+# definition can be found and edited in one place.
+ignore = ["E501"]
+
+[tool.ruff.format]
+# One glossary entry per line keeps the table scannable and diffs one-line-per-term.
+exclude = ["src/medexplain/terms.py"]
