@@ -18,6 +18,7 @@ authors:
 version: 0.1.0
 date-released: 2026-11-16
 license: MIT
+repository-code: "https://github.com/anandswadurkar/Medical-report-and-conversation-analysis"
 keywords:
   - patient education
   - health literacy
